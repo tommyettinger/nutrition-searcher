@@ -82,7 +82,7 @@
 			[(first (nth columns c)) c])))
 (defn prime
   []
-    (let [collected (map #(st/split % #"\^" ) (st/split (slurp (io/file (io/resource "RAW.txt"))) #"\n" ))
+    (let [collected (map #(st/split % #"\^" ) (st/split (slurp (io/resource "RAW.txt")) #"\n" ))
     	    loaded (rec-load (File. "MyNutrition.dat"))
   	  	interested (sort-by first (into [] (map #(concat (vector 
   	  	           (apply max (map (fn [ld] (/ (try (read-string (nth % ((nth (nth ld 0) 0) column-indexes))) (catch Exception e (nth ld 1))) (nth ld 1))) loaded))
